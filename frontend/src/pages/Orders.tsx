@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { ChevronRight, Loader2 } from 'lucide-react';
 import DashboardLayout from '@/components/DashboardLayout';
 import OrderDetails from '@/components/OrderDetails';

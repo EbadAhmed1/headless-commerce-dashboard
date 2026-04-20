@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client/react';
 import { Package, Truck, Download, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -42,7 +42,13 @@ export default function OrderDetails({ order, onStatusChange }: OrderDetailsProp
   const [labelGenerated, setLabelGenerated] = useState(false);
   const [trackingNumber, setTrackingNumber] = useState<string | null>(null);
 
-  const [generateLabel] = useMutation(GENERATE_SHIPPING_LABEL);
+  const [generateLabel] = useMutation<{
+    generateShippingLabel: {
+      success: boolean;
+      trackingNumber: string;
+      message?: string;
+    };
+  }>(GENERATE_SHIPPING_LABEL);
   const [updateStatus] = useMutation(UPDATE_ORDER_STATUS);
 
   const handleGenerateLabel = async () => {

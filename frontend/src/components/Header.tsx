@@ -9,14 +9,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { cn } from '@/lib/utils';
 
 interface HeaderProps {
   sidebarOpen: boolean;
   onToggleSidebar: () => void;
 }
 
-export default function Header({ sidebarOpen, onToggleSidebar }: HeaderProps) {
+export default function Header({ onToggleSidebar }: HeaderProps) {
   return (
     <header className="h-16 bg-background border-b border-border flex items-center justify-between px-6 gap-4">
       {/* Left Section: Menu Toggle & Search */}

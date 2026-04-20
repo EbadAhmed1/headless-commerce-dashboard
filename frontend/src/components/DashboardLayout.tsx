@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { Menu, X, LogOut, Settings, User } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import Sidebar from './Sidebar';
 import Header from './Header';
 

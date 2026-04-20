@@ -13,6 +13,7 @@ import {
   PieChart,
   Pie,
   Cell,
+  type PieLabelRenderProps,
 } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp, Package, ShoppingCart, DollarSign } from 'lucide-react';
@@ -170,7 +171,7 @@ export default function AnalyticsDashboard({
                   border: '1px solid #e5e7eb',
                   borderRadius: '0.5rem',
                 }}
-                formatter={(value: number) => `$${value.toFixed(2)}`}
+                formatter={(value) => `$${Number(value).toFixed(2)}`}
               />
               <Legend />
               <Bar dataKey="totalRevenue" fill="#3b82f6" name="Total Revenue" radius={[8, 8, 0, 0]} />
@@ -213,11 +214,11 @@ export default function AnalyticsDashboard({
                   border: '1px solid #e5e7eb',
                   borderRadius: '0.5rem',
                 }}
-                formatter={(value: number) => {
+                formatter={(value) => {
                   if (typeof value === 'number' && value > 100) {
                     return `$${value.toFixed(2)}`;
                   }
-                  return value;
+                  return String(value);
                 }}
               />
               <Legend />
@@ -291,7 +292,7 @@ export default function AnalyticsDashboard({
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ productName, revenue }) => `${productName}: $${revenue}`}
+                  label={(props: PieLabelRenderProps & { productName?: string; revenue?: number }) => `${props.productName}: $${props.revenue}`}
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="revenue"
@@ -300,7 +301,7 @@ export default function AnalyticsDashboard({
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value: number) => `$${value.toFixed(2)}`} />
+                <Tooltip formatter={(value) => `$${Number(value).toFixed(2)}`} />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
