@@ -15,4 +15,11 @@
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EcommerceAdminDashboard.Models\EcommerceAdminDashboard.Models.csproj" />
+    <ProjectReference Include="..\EcommerceAdminDashboard.Data\EcommerceAdminDashboard.Data.csproj" />
+    <ProjectReference Include="..\EcommerceAdminDashboard.Services\EcommerceAdminDashboard.Services.csproj" />
+    <ProjectReference Include="..\EcommerceAdminDashboard.Shared\EcommerceAdminDashboard.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
