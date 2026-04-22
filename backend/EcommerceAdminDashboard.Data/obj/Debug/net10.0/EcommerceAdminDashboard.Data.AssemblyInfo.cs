@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EcommerceAdminDashboard.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33fd58c352538607c590d87b6bff30001b7e17c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5cb6b00a8a92b3fe75da0a2cf98e1878efa0ee01")]
 [assembly: System.Reflection.AssemblyProductAttribute("EcommerceAdminDashboard.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EcommerceAdminDashboard.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
