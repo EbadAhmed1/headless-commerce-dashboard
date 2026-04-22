@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "wQfLVnYXvrQ=",
+  "dgSpecHash": "JOmA4N5NWPU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.6\\microsoft.entityframeworkcore.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.6\\microsoft.entityframeworkcore.abstractions.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.6\\microsoft.entityframeworkcore.analyzers.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\10.0.6\\microsoft.extensions.caching.abstractions.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.caching.memory\\10.0.6\\microsoft.extensions.caching.memory.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.6\\microsoft.extensions.dependencyinjection.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.6\\microsoft.extensions.dependencyinjection.abstractions.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.logging\\10.0.6\\microsoft.extensions.logging.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.6\\microsoft.extensions.logging.abstractions.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.options\\10.0.6\\microsoft.extensions.options.10.0.6.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.6\\microsoft.extensions.primitives.10.0.6.nupkg.sha512"
+  ],
   "logs": []
 }

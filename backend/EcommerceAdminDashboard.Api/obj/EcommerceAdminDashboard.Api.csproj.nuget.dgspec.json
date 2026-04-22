@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj": {}
+    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj": {
+    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj",
         "projectName": "EcommerceAdminDashboard.Api",
-        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj",
+        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj",
         "packagesPath": "C:\\Users\\Hi-Tech\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Api\\obj\\",
+        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hi-Tech\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,17 +26,17 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj": {
-                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj"
+              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj": {
+                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj"
               },
-              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj": {
-                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj"
+              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj": {
+                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj"
               },
-              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj": {
-                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj"
+              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj": {
+                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj"
               },
-              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj": {
-                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj"
+              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj": {
+                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj"
               }
             }
           }
@@ -519,14 +519,14 @@
         }
       }
     },
-    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj": {
+    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj",
         "projectName": "EcommerceAdminDashboard.Data",
-        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj",
+        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj",
         "packagesPath": "C:\\Users\\Hi-Tech\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Data\\obj\\",
+        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hi-Tech\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -540,7 +540,11 @@
         "frameworks": {
           "net10.0": {
             "targetAlias": "net10.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj": {
+                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -558,6 +562,16 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -852,14 +866,14 @@
         }
       }
     },
-    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj": {
+    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj",
         "projectName": "EcommerceAdminDashboard.Models",
-        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj",
+        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj",
         "packagesPath": "C:\\Users\\Hi-Tech\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Models\\obj\\",
+        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hi-Tech\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1185,14 +1199,14 @@
         }
       }
     },
-    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj": {
+    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj",
+        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj",
         "projectName": "EcommerceAdminDashboard.Services",
-        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj",
+        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Services\\EcommerceAdminDashboard.Services.csproj",
         "packagesPath": "C:\\Users\\Hi-Tech\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Services\\obj\\",
+        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hi-Tech\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1206,7 +1220,14 @@
         "frameworks": {
           "net10.0": {
             "targetAlias": "net10.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj": {
+                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Data\\EcommerceAdminDashboard.Data.csproj"
+              },
+              "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj": {
+                "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Models\\EcommerceAdminDashboard.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -1224,6 +1245,20 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[8.7.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.7.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -1518,14 +1553,14 @@
         }
       }
     },
-    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj": {
+    "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj",
         "projectName": "EcommerceAdminDashboard.Shared",
-        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj",
+        "projectPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Shared\\EcommerceAdminDashboard.Shared.csproj",
         "packagesPath": "C:\\Users\\Hi-Tech\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Shared\\obj\\",
+        "outputPath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hi-Tech\\AppData\\Roaming\\NuGet\\NuGet.Config"

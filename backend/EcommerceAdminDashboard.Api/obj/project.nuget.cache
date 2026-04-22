@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "UIJOrxpkX8s=",
+  "dgSpecHash": "q8dygFx0EoA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj",
+  "projectFilePath": "C:\\Users\\Hi-Tech\\Desktop\\ecommerce-admin-dashboard\\backend\\EcommerceAdminDashboard.Api\\EcommerceAdminDashboard.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\chillicream.nitro.app\\28.0.7\\chillicream.nitro.app.28.0.7.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\greendonut\\15.1.14\\greendonut.15.1.14.nupkg.sha512",
@@ -47,6 +48,10 @@
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.6\\microsoft.entityframeworkcore.analyzers.10.0.6.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.4\\microsoft.entityframeworkcore.relational.10.0.4.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.0\\microsoft.extensions.dependencymodel.10.0.0.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.7.0\\microsoft.identitymodel.abstractions.8.7.0.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.7.0\\microsoft.identitymodel.jsonwebtokens.8.7.0.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.identitymodel.logging\\8.7.0\\microsoft.identitymodel.logging.8.7.0.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.7.0\\microsoft.identitymodel.tokens.8.7.0.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\npgsql\\10.0.2\\npgsql.10.0.2.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\10.0.1\\npgsql.entityframeworkcore.postgresql.10.0.1.nupkg.sha512",
@@ -59,6 +64,7 @@
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\serilog.sinks.console\\6.1.1\\serilog.sinks.console.6.1.1.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\serilog.sinks.debug\\3.0.0\\serilog.sinks.debug.3.0.0.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\serilog.sinks.file\\7.0.0\\serilog.sinks.file.7.0.0.nupkg.sha512",
+    "C:\\Users\\Hi-Tech\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.7.0\\system.identitymodel.tokens.jwt.8.7.0.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\system.io.hashing\\8.0.0\\system.io.hashing.8.0.0.nupkg.sha512",
     "C:\\Users\\Hi-Tech\\.nuget\\packages\\yarp.reverseproxy\\2.3.0\\yarp.reverseproxy.2.3.0.nupkg.sha512"
   ],

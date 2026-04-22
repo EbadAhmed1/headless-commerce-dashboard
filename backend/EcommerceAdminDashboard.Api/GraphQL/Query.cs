@@ -10,7 +10,7 @@ public class Query
         return await orderService.GetOrderAsync(orderId);
     }
 
-    public async Task<IEnumerable<Order>> GetOrders(int skip = 0, int take = 10, [Service] IOrderService orderService)
+    public async Task<IEnumerable<Order>> GetOrders([Service] IOrderService orderService, int skip = 0, int take = 10)
     {
         return await orderService.GetOrdersAsync(skip, take);
     }
@@ -55,7 +55,7 @@ public class Query
         return await inventoryService.GetTotalQuantityByVariantAsync(variantId);
     }
 
-    public async Task<IEnumerable<Inventory>> GetLowStockItems(int threshold = 10, [Service] IInventoryService inventoryService)
+    public async Task<IEnumerable<Inventory>> GetLowStockItems([Service] IInventoryService inventoryService, int threshold = 10)
     {
         return await inventoryService.GetLowStockItemsAsync(threshold);
     }
