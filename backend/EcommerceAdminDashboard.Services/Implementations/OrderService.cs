@@ -76,4 +76,36 @@ public class OrderService : IOrderService
     {
         return await _orderRepository.GetOrdersByCustomerEmailAsync(email);
     }
+
+    public async Task<Order> CreateOrderFromShopifyAsync(ShopifyOrderDto shopifyOrder)
+    {
+        var order = new Order
+        {
+            OrderId = Guid.NewGuid(),
+            OrderDate = shopifyOrder.CreatedAt ?? DateTime.UtcNow,
+            CustomerName = shopifyOrder.Email,
+            CustomerEmail = shopifyOrder.Email,
+            ShippingAddress = shopifyOrder.ShippingAddress != null
+                ? $"{shopifyOrder.ShippingAddress.Address1}, {shopifyOrder.ShippingAddress.City}, {shopifyOrder.ShippingAddress.Province}, {shopifyOrder.ShippingAddress.Country}"
+                : string.Empty,
+            TotalAmount = shopifyOrder.TotalPrice ?? 0m,
+            Status = shopifyOrder.FinancialStatus,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        foreach (var item in shopifyOrder.LineItems)
+        {
+            order.OrderItems.Add(new OrderItem
+            {
+                OrderItemId = Guid.NewGuid(),
+                OrderId = order.OrderId,
+                Quantity = item.Quantity,
+                PriceAtPurchase = item.Price ?? 0m
+            });
+        }
+
+        await _orderRepository.AddAsync(order);
+        return order;
+    }
 }

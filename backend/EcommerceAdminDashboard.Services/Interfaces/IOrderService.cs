@@ -11,4 +11,5 @@ public interface IOrderService
     Task<Order?> UpdateOrderStatusAsync(Guid orderId, string newStatus);
     Task<IEnumerable<Order>> GetOrdersByStatusAsync(string status);
     Task<IEnumerable<Order>> GetOrdersByCustomerEmailAsync(string email);
+    Task<Order> CreateOrderFromShopifyAsync(ShopifyOrderDto shopifyOrder);
 }

@@ -45,11 +45,11 @@ public class ShopifyWebhookService
         {
             OrderId = Guid.NewGuid(),
             ShopifyOrderId = shopifyOrder.Id,
-            OrderDate = shopifyOrder.CreatedAt,
+            OrderDate = shopifyOrder.CreatedAt ?? DateTime.UtcNow,
             CustomerName = $"{shopifyOrder.Customer?.FirstName} {shopifyOrder.Customer?.LastName}",
             CustomerEmail = shopifyOrder.Customer?.Email ?? string.Empty,
             ShippingAddress = FormatAddress(shopifyOrder.ShippingAddress),
-            TotalAmount = shopifyOrder.TotalPrice,
+            TotalAmount = shopifyOrder.TotalPrice ?? 0m,
             Status = shopifyOrder.FulfillmentStatus ?? "Pending",
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
@@ -63,7 +63,7 @@ public class ShopifyWebhookService
                 OrderId = order.OrderId,
                 VariantId = Guid.NewGuid(),
                 Quantity = lineItem.Quantity,
-                PriceAtPurchase = lineItem.Price
+                PriceAtPurchase = lineItem.Price ?? 0m
             };
             order.OrderItems.Add(orderItem);
         }
@@ -77,6 +77,6 @@ public class ShopifyWebhookService
         if (address == null)
             return string.Empty;
 
-        return $"{address.Address1}, {address.City}, {address.Province} {address.Zip}, {address.Country}";
+        return $"{address.Address1}, {address.City}, {address.Province} {address.PostalCode}, {address.Country}";
     }
 }

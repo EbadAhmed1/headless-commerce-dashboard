@@ -3,11 +3,19 @@ namespace EcommerceAdminDashboard.Models.DTOs;
 public class ShopifyOrderDto
 {
     public long Id { get; set; }
+    public long OrderNumber { get; set; }
     public string Email { get; set; } = string.Empty;
-    public DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+    public DateTime? ClosedAt { get; set; }
+    public DateTime? CancelledAt { get; set; }
     public string FinancialStatus { get; set; } = string.Empty;
     public string FulfillmentStatus { get; set; } = string.Empty;
-    public decimal TotalPrice { get; set; }
+    public decimal? TotalPrice { get; set; }
+    public decimal? SubtotalPrice { get; set; }
+    public decimal? TotalTax { get; set; }
+    public decimal? TotalShippingPrice { get; set; }
+    public string Currency { get; set; } = string.Empty;
     public ShopifyCustomerDto? Customer { get; set; }
     public List<ShopifyLineItemDto> LineItems { get; set; } = new();
     public ShopifyAddressDto? ShippingAddress { get; set; }
@@ -24,10 +32,11 @@ public class ShopifyCustomerDto
 public class ShopifyLineItemDto
 {
     public long Id { get; set; }
+    public long ProductId { get; set; }
     public long VariantId { get; set; }
     public string Title { get; set; } = string.Empty;
     public int Quantity { get; set; }
-    public decimal Price { get; set; }
+    public decimal? Price { get; set; }
     public string Sku { get; set; } = string.Empty;
 }
 
@@ -39,6 +48,7 @@ public class ShopifyAddressDto
     public string Address2 { get; set; } = string.Empty;
     public string City { get; set; } = string.Empty;
     public string Province { get; set; } = string.Empty;
-    public string Zip { get; set; } = string.Empty;
+    public string PostalCode { get; set; } = string.Empty;
     public string Country { get; set; } = string.Empty;
+    public string Phone { get; set; } = string.Empty;
 }
