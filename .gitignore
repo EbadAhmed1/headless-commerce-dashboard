@@ -1,0 +1,153 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+.env.production.local
+*.env
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+.history/
+.ionide/
+
+# Visual Studio
+.vs/
+.vscode/
+*.sln.iml
+*.user
+*.suo
+*.ncb
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+
+# Build Directories
+bin/
+obj/
+dist/
+build/
+out/
+target/
+.next/
+.nuxt/
+coverage/
+
+# Node.js
+node_modules/
+npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log
+
+# Package Manager Lock Files (Optional - uncomment if needed)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Logs
+logs/
+*.log
+*.logs
+.manus-logs/
+
+# Database Files
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+ecommerce_db
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# OS Files
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE Specific
+.vscode/settings.json
+.vscode/extensions.json
+.vscode/launch.json
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Kubernetes
+k8s/secrets/
+k8s/configmaps/
+
+# SSL/TLS Certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+
+# API Keys and Secrets
+secrets/
+.secrets/
+*.secret
+*.key
+*.token
+
+# Testing
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Build Output
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Dependency Directories
+vendor/
+packages/
+
+# Configuration Files (Local)
+appsettings.local.json
+appsettings.*.local.json
+local.settings.json
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
+
+# Misc
+*.orig
+*.rej
+.env.test
+.env.test.local
