@@ -1,4 +1,5 @@
 import { Menu, Search, Bell, User, ChevronDown } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -16,6 +17,16 @@ interface HeaderProps {
 }
 
 export default function Header({ onToggleSidebar }: HeaderProps) {
+  const [, setLocation] = useLocation();
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user_email');
+    setLocation('/login');
+  };
+
+  const userEmail = localStorage.getItem('user_email') || 'Admin User';
+
   return (
     <header className="h-16 bg-background border-b border-border flex items-center justify-between px-6 gap-4">
       {/* Left Section: Menu Toggle & Search */}
@@ -42,14 +53,16 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
       {/* Right Section: Notifications & User Menu */}
       <div className="flex items-center gap-4">
         {/* Notifications */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="relative"
-        >
-          <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-        </Button>
+        <Link href="/notifications">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative"
+          >
+            <Bell className="w-5 h-5" />
+            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
+          </Button>
+        </Link>
 
         {/* User Menu */}
         <DropdownMenu>
@@ -62,7 +75,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                 <User className="w-4 h-4 text-primary-foreground" />
               </div>
               <div className="hidden sm:block text-left">
-                <p className="text-sm font-medium text-foreground">Admin User</p>
+                <p className="text-sm font-medium text-foreground">{userEmail}</p>
                 <p className="text-xs text-muted-foreground">Administrator</p>
               </div>
               <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -71,10 +84,17 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile Settings</DropdownMenuItem>
-            <DropdownMenuItem>Preferences</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setLocation('/settings/profile')}>
+              Profile Settings
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setLocation('/settings/preferences')}>
+              Preferences
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive focus:text-destructive">
+            <DropdownMenuItem
+              className="text-destructive focus:text-destructive"
+              onClick={handleLogout}
+            >
               Sign Out
             </DropdownMenuItem>
           </DropdownMenuContent>

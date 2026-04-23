@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import {
   BarChart3,
   Package,
@@ -30,7 +30,7 @@ const navItems: NavItem[] = [
   {
     label: 'Dashboard',
     icon: <Home className="w-5 h-5" />,
-    href: '/',
+    href: '/dashboard',
   },
   {
     label: 'Inventory',
@@ -56,6 +56,13 @@ const navItems: NavItem[] = [
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [, setLocation] = useLocation();
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user_email');
+    setLocation('/login');
+  };
 
   const toggleSubmenu = (label: string) => {
     setExpandedItems((prev) =>
@@ -155,16 +162,19 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
         {/* Footer Section */}
         <div className="border-t border-sidebar-border p-4 space-y-2">
+          <Link href="/settings">
+            <Button
+              variant="ghost"
+              className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+            >
+              <Settings className="w-5 h-5 mr-3" />
+              Settings
+            </Button>
+          </Link>
           <Button
             variant="ghost"
             className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-          >
-            <Settings className="w-5 h-5 mr-3" />
-            Settings
-          </Button>
-          <Button
-            variant="ghost"
-            className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+            onClick={handleLogout}
           >
             <LogOut className="w-5 h-5 mr-3" />
             Logout
