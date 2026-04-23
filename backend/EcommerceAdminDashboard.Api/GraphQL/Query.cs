@@ -1,62 +1,52 @@
+using EcommerceAdminDashboard.Data;
 using EcommerceAdminDashboard.Models.Domain;
-using EcommerceAdminDashboard.Services.Interfaces;
+using HotChocolate.Data;
 
 namespace EcommerceAdminDashboard.Api.GraphQL;
 
 public class Query
 {
-    public async Task<Order?> GetOrder(Guid orderId, [Service] IOrderService orderService)
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IQueryable<Order> GetOrders(ApplicationDbContext context)
     {
-        return await orderService.GetOrderAsync(orderId);
+        return context.Orders;
     }
 
-    public async Task<IEnumerable<Order>> GetOrders([Service] IOrderService orderService, int skip = 0, int take = 10)
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IQueryable<Product> GetProducts(ApplicationDbContext context)
     {
-        return await orderService.GetOrdersAsync(skip, take);
+        return context.Products;
     }
 
-    public async Task<IEnumerable<Order>> GetOrdersByStatus(string status, [Service] IOrderService orderService)
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IQueryable<Variant> GetVariants(ApplicationDbContext context)
     {
-        return await orderService.GetOrdersByStatusAsync(status);
+        return context.Variants;
     }
 
-    public async Task<Product?> GetProduct(Guid productId, [Service] IProductService productService)
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
+    public IQueryable<Inventory> GetInventory(ApplicationDbContext context)
     {
-        return await productService.GetProductAsync(productId);
+        return context.Inventory;
     }
 
-    public async Task<IEnumerable<Product>> GetProducts([Service] IProductService productService)
+    [UseProjection]
+    public Order? GetOrder(Guid orderId, ApplicationDbContext context)
     {
-        return await productService.GetProductsAsync();
+        return context.Orders.FirstOrDefault(o => o.OrderId == orderId);
     }
 
-    public async Task<IEnumerable<Product>> GetActiveProducts([Service] IProductService productService)
+    [UseProjection]
+    public Product? GetProduct(Guid productId, ApplicationDbContext context)
     {
-        return await productService.GetActiveProductsAsync();
-    }
-
-    public async Task<IEnumerable<Product>> SearchProducts(string query, [Service] IProductService productService)
-    {
-        return await productService.SearchProductsAsync(query);
-    }
-
-    public async Task<Inventory?> GetInventory(Guid inventoryId, [Service] IInventoryService inventoryService)
-    {
-        return await inventoryService.GetInventoryAsync(inventoryId);
-    }
-
-    public async Task<IEnumerable<Inventory>> GetInventoryByVariant(Guid variantId, [Service] IInventoryService inventoryService)
-    {
-        return await inventoryService.GetInventoryByVariantAsync(variantId);
-    }
-
-    public async Task<int> GetTotalQuantityByVariant(Guid variantId, [Service] IInventoryService inventoryService)
-    {
-        return await inventoryService.GetTotalQuantityByVariantAsync(variantId);
-    }
-
-    public async Task<IEnumerable<Inventory>> GetLowStockItems([Service] IInventoryService inventoryService, int threshold = 10)
-    {
-        return await inventoryService.GetLowStockItemsAsync(threshold);
+        return context.Products.FirstOrDefault(p => p.ProductId == productId);
     }
 }

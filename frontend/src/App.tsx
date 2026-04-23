@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { apolloClient } from "./lib/apolloClient";
 import Dashboard from "./pages/Dashboard";
+import Inventory from "./pages/Inventory";
 import Orders from "./pages/Orders";
 import Analytics from "./pages/Analytics";
 
@@ -15,6 +16,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Dashboard} />
+      <Route path="/inventory" component={Inventory} />
+      <Route path="/inventory/products" component={Inventory} />
+      <Route path="/inventory/stock" component={Inventory} />
       <Route path="/orders" component={Orders} />
       <Route path="/analytics" component={Analytics} />
       <Route path="/404" component={NotFound} />

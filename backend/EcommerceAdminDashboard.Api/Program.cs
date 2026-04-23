@@ -1,47 +1,79 @@
+using EcommerceAdminDashboard.Api.GraphQL;
 using EcommerceAdminDashboard.Data;
+using EcommerceAdminDashboard.Data.Repositories;
+using EcommerceAdminDashboard.Models.Domain;
+using EcommerceAdminDashboard.Services.Implementations;
+using EcommerceAdminDashboard.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
+// Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Repositories
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
+
+// Application services
+builder.Services.AddScoped<OrderService>();
+builder.Services.AddScoped<IOrderService>(sp => sp.GetRequiredService<OrderService>());
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IInventoryService, InventoryService>();
+builder.Services.AddScoped<IAuthService>(sp =>
+{
+    var config = sp.GetRequiredService<IConfiguration>();
+    var userRepo = sp.GetRequiredService<IRepository<User>>();
+    return new AuthService(
+        userRepo,
+        config["Jwt:Secret"] ?? throw new InvalidOperationException("Jwt:Secret is not configured"),
+        config["Jwt:Issuer"] ?? "EcommerceAdminDashboard",
+        config["Jwt:Audience"] ?? "EcommerceAdminDashboardUsers");
+});
+builder.Services.AddHttpClient<IShopifyService, ShopifyService>();
+
+// CORS
+var corsSettings = builder.Configuration.GetSection("Cors");
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins(corsSettings.GetSection("AllowedOrigins").Get<string[]>() ?? ["http://localhost:3000"])
+              .WithMethods(corsSettings.GetSection("AllowedMethods").Get<string[]>() ?? ["GET", "POST"])
+              .WithHeaders(corsSettings.GetSection("AllowedHeaders").Get<string[]>() ?? ["Content-Type", "Authorization"])
+              .AllowCredentials();
+    });
+});
+
+// GraphQL (HotChocolate)
+builder.Services
+    .AddGraphQLServer()
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>()
+    .AddFiltering()
+    .AddSorting()
+    .AddProjections();
+
+// Controllers (for webhook endpoints)
+builder.Services.AddControllers();
+
+builder.Services.AddOpenApi();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
+app.UseCors();
+
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.MapControllers();
+app.MapGraphQL();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
