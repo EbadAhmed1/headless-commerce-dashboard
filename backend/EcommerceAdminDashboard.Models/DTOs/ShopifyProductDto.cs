@@ -16,6 +16,8 @@ public class ShopifyVariantDto
     public long ProductId { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Sku { get; set; } = string.Empty;
-    public decimal Price { get; set; }
+    public string Price { get; set; } = "0";
     public int InventoryQuantity { get; set; }
+
+    public decimal PriceDecimal => decimal.TryParse(Price, out var p) ? p : 0m;
 }

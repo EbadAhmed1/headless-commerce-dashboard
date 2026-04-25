@@ -1,5 +1,6 @@
 using EcommerceAdminDashboard.Data;
 using EcommerceAdminDashboard.Models.Domain;
+using HotChocolate;
 using HotChocolate.Data;
 
 namespace EcommerceAdminDashboard.Api.GraphQL;
@@ -9,7 +10,7 @@ public class Query
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public IQueryable<Order> GetOrders(ApplicationDbContext context)
+    public IQueryable<Order> GetOrders([Service] ApplicationDbContext context)
     {
         return context.Orders;
     }
@@ -17,7 +18,7 @@ public class Query
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public IQueryable<Product> GetProducts(ApplicationDbContext context)
+    public IQueryable<Product> GetProducts([Service] ApplicationDbContext context)
     {
         return context.Products;
     }
@@ -25,7 +26,7 @@ public class Query
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public IQueryable<Variant> GetVariants(ApplicationDbContext context)
+    public IQueryable<Variant> GetVariants([Service] ApplicationDbContext context)
     {
         return context.Variants;
     }
@@ -33,19 +34,19 @@ public class Query
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public IQueryable<Inventory> GetInventory(ApplicationDbContext context)
+    public IQueryable<Inventory> GetInventory([Service] ApplicationDbContext context)
     {
         return context.Inventory;
     }
 
     [UseProjection]
-    public Order? GetOrder(Guid orderId, ApplicationDbContext context)
+    public Order? GetOrder(Guid orderId, [Service] ApplicationDbContext context)
     {
         return context.Orders.FirstOrDefault(o => o.OrderId == orderId);
     }
 
     [UseProjection]
-    public Product? GetProduct(Guid productId, ApplicationDbContext context)
+    public Product? GetProduct(Guid productId, [Service] ApplicationDbContext context)
     {
         return context.Products.FirstOrDefault(p => p.ProductId == productId);
     }

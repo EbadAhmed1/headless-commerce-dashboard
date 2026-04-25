@@ -32,7 +32,11 @@ public class ShopifyWebhookController : ControllerBase
                 return Unauthorized();
             }
 
-            var shopifyOrder = JsonSerializer.Deserialize<ShopifyOrderDto>(body);
+            var shopifyOrder = JsonSerializer.Deserialize<ShopifyOrderDto>(body, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+                PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+            });
             if (shopifyOrder == null)
                 return BadRequest("Invalid order data");
 

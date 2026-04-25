@@ -88,7 +88,7 @@ public class OrderService : IOrderService
             ShippingAddress = shopifyOrder.ShippingAddress != null
                 ? $"{shopifyOrder.ShippingAddress.Address1}, {shopifyOrder.ShippingAddress.City}, {shopifyOrder.ShippingAddress.Province}, {shopifyOrder.ShippingAddress.Country}"
                 : string.Empty,
-            TotalAmount = shopifyOrder.TotalPrice ?? 0m,
+            TotalAmount = decimal.TryParse(shopifyOrder.TotalPrice, out var tp) ? tp : 0m,
             Status = shopifyOrder.FinancialStatus,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
@@ -101,7 +101,7 @@ public class OrderService : IOrderService
                 OrderItemId = Guid.NewGuid(),
                 OrderId = order.OrderId,
                 Quantity = item.Quantity,
-                PriceAtPurchase = item.Price ?? 0m
+                PriceAtPurchase = item.PriceDecimal
             });
         }
 

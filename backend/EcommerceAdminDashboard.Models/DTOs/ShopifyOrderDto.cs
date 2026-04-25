@@ -11,10 +11,10 @@ public class ShopifyOrderDto
     public DateTime? CancelledAt { get; set; }
     public string FinancialStatus { get; set; } = string.Empty;
     public string FulfillmentStatus { get; set; } = string.Empty;
-    public decimal? TotalPrice { get; set; }
-    public decimal? SubtotalPrice { get; set; }
-    public decimal? TotalTax { get; set; }
-    public decimal? TotalShippingPrice { get; set; }
+    public string? TotalPrice { get; set; }
+    public string? SubtotalPrice { get; set; }
+    public string? TotalTax { get; set; }
+    public string? TotalShippingPrice { get; set; }
     public string Currency { get; set; } = string.Empty;
     public ShopifyCustomerDto? Customer { get; set; }
     public List<ShopifyLineItemDto> LineItems { get; set; } = new();
@@ -36,8 +36,10 @@ public class ShopifyLineItemDto
     public long VariantId { get; set; }
     public string Title { get; set; } = string.Empty;
     public int Quantity { get; set; }
-    public decimal? Price { get; set; }
+    public string? Price { get; set; }
     public string Sku { get; set; } = string.Empty;
+
+    public decimal PriceDecimal => decimal.TryParse(Price, out var p) ? p : 0m;
 }
 
 public class ShopifyAddressDto

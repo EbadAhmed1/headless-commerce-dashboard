@@ -104,7 +104,7 @@ export const GET_ORDERS = gql`
 
 // Order Mutations
 export const UPDATE_ORDER_STATUS = gql`
-  mutation UpdateOrderStatus($orderId: UUID!, $newStatus: OrderStatus!) {
+  mutation UpdateOrderStatus($orderId: UUID!, $newStatus: String!) {
     updateOrderStatus(orderId: $orderId, newStatus: $newStatus) {
       orderId
       status
@@ -205,6 +205,17 @@ export const GET_LOW_STOCK_ALERTS = gql`
       productName
       currentQuantity
       binName
+    }
+  }
+`;
+
+// Shopify Sync
+export const SYNC_SHOPIFY_DATA = gql`
+  mutation SyncShopifyData {
+    syncShopifyData {
+      success
+      productsSynced
+      ordersSynced
     }
   }
 `;

@@ -1,55 +1,91 @@
-import { BarChart3, Package, ShoppingCart, TrendingUp } from 'lucide-react';
+import { useState } from 'react';
+import { useQuery, useMutation } from '@apollo/client/react';
+import { BarChart3, Package, ShoppingCart, TrendingUp, RefreshCw, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import DashboardLayout from '@/components/DashboardLayout';
-
-interface StatCard {
-  title: string;
-  value: string;
-  change: string;
-  icon: React.ReactNode;
-  trend: 'up' | 'down';
-}
-
-const stats: StatCard[] = [
-  {
-    title: 'Total Orders',
-    value: '1,234',
-    change: '+12% from last month',
-    icon: <ShoppingCart className="w-6 h-6" />,
-    trend: 'up',
-  },
-  {
-    title: 'Active Products',
-    value: '456',
-    change: '+5% from last month',
-    icon: <Package className="w-6 h-6" />,
-    trend: 'up',
-  },
-  {
-    title: 'Revenue',
-    value: '$45,231',
-    change: '+8% from last month',
-    icon: <TrendingUp className="w-6 h-6" />,
-    trend: 'up',
-  },
-  {
-    title: 'Low Stock Items',
-    value: '23',
-    change: '-3% from last month',
-    icon: <BarChart3 className="w-6 h-6" />,
-    trend: 'down',
-  },
-];
+import { GET_ORDERS, GET_PRODUCTS, GET_INVENTORY, SYNC_SHOPIFY_DATA } from '@/lib/graphql';
 
 export default function Dashboard() {
+  const [syncMessage, setSyncMessage] = useState<string | null>(null);
+
+  const { data: ordersData, loading: ordersLoading, refetch: refetchOrders } = useQuery(GET_ORDERS, {
+    variables: { order: [{ orderDate: 'DESC' }] },
+  });
+  const { data: productsData, loading: productsLoading, refetch: refetchProducts } = useQuery(GET_PRODUCTS, {
+    variables: { order: [{ createdAt: 'DESC' }] },
+  });
+  const { data: inventoryData, loading: inventoryLoading, refetch: refetchInventory } = useQuery(GET_INVENTORY, {
+    variables: { order: [{ lastUpdated: 'DESC' }] },
+  });
+
+  const [syncShopify, { loading: syncing }] = useMutation(SYNC_SHOPIFY_DATA, {
+    onCompleted: (data) => {
+      const result = data.syncShopifyData;
+      setSyncMessage(`Synced ${result.productsSynced} products and ${result.ordersSynced} orders from Shopify`);
+      refetchOrders();
+      refetchProducts();
+      refetchInventory();
+      setTimeout(() => setSyncMessage(null), 5000);
+    },
+    onError: (error) => {
+      setSyncMessage(`Sync failed: ${error.message}`);
+      setTimeout(() => setSyncMessage(null), 5000);
+    },
+  });
+
+  const orders = ordersData?.orders || [];
+  const products = productsData?.products || [];
+  const inventory = inventoryData?.inventory || [];
+
+  const lowStockCount = inventory.filter((item: any) => item.quantity <= 10).length;
+  const totalRevenue = orders.reduce((sum: number, o: any) => sum + (o.totalAmount || 0), 0);
+
+  const stats = [
+    {
+      title: 'Total Orders',
+      value: ordersLoading ? '...' : orders.length.toString(),
+      icon: <ShoppingCart className="w-6 h-6" />,
+    },
+    {
+      title: 'Active Products',
+      value: productsLoading ? '...' : products.length.toString(),
+      icon: <Package className="w-6 h-6" />,
+    },
+    {
+      title: 'Revenue',
+      value: ordersLoading ? '...' : `$${totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      icon: <TrendingUp className="w-6 h-6" />,
+    },
+    {
+      title: 'Low Stock Items',
+      value: inventoryLoading ? '...' : lowStockCount.toString(),
+      icon: <BarChart3 className="w-6 h-6" />,
+    },
+  ];
+
+  const recentOrders = orders.slice(0, 5);
+
   return (
     <DashboardLayout>
       <div className="space-y-8">
         {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-          <p className="text-muted-foreground mt-2">Welcome back! Here's your business overview.</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+            <p className="text-muted-foreground mt-2">Welcome back! Here's your business overview.</p>
+          </div>
+          <Button onClick={() => syncShopify()} disabled={syncing} className="gap-2">
+            {syncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" />}
+            {syncing ? 'Syncing...' : 'Sync from Shopify'}
+          </Button>
         </div>
+
+        {syncMessage && (
+          <div className={`p-3 rounded-lg text-sm ${syncMessage.includes('failed') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+            {syncMessage}
+          </div>
+        )}
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -65,13 +101,6 @@ export default function Dashboard() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-card-foreground">{stat.value}</div>
-                <p
-                  className={`text-xs mt-2 ${
-                    stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
-                  }`}
-                >
-                  {stat.change}
-                </p>
               </CardContent>
             </Card>
           ))}
@@ -81,28 +110,42 @@ export default function Dashboard() {
         <Card className="bg-card border-border">
           <CardHeader>
             <CardTitle className="text-card-foreground">Recent Orders</CardTitle>
-            <CardDescription>Your latest 5 orders</CardDescription>
+            <CardDescription>Your latest orders from Shopify</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-secondary transition-colors"
-                >
-                  <div>
-                    <p className="font-medium text-card-foreground">Order #{1000 + i}</p>
-                    <p className="text-sm text-muted-foreground">Customer Name</p>
+            {ordersLoading ? (
+              <div className="flex justify-center py-8">
+                <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+              </div>
+            ) : recentOrders.length === 0 ? (
+              <p className="text-center text-muted-foreground py-8">
+                No orders yet. Click "Sync from Shopify" to import your orders.
+              </p>
+            ) : (
+              <div className="space-y-4">
+                {recentOrders.map((order: any) => (
+                  <div
+                    key={order.orderId}
+                    className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-secondary transition-colors"
+                  >
+                    <div>
+                      <p className="font-medium text-card-foreground">
+                        #{order.shopifyOrderId || order.orderId.slice(0, 8)}
+                      </p>
+                      <p className="text-sm text-muted-foreground">{order.customerName}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-medium text-card-foreground">
+                        ${order.totalAmount?.toFixed(2)}
+                      </p>
+                      <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                        {order.status}
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-medium text-card-foreground">${(i * 150).toFixed(2)}</p>
-                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-                      Pending
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>

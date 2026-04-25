@@ -22,7 +22,8 @@ namespace EcommerceAdminDashboard.Services.Implementations
         private readonly HttpClient _httpClient;
         private static readonly JsonSerializerOptions JsonOptions = new()
         {
-            PropertyNameCaseInsensitive = true
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
         };
 
         public ShopifyService(
@@ -38,7 +39,8 @@ namespace EcommerceAdminDashboard.Services.Implementations
 
             var accessToken = configuration["Shopify:AccessToken"] ?? string.Empty;
             var storeUrl = configuration["Shopify:StoreUrl"] ?? string.Empty;
-            _httpClient.BaseAddress = new Uri($"https://{storeUrl}/admin/api/2024-01/");
+            var apiVersion = configuration["Shopify:ApiVersion"] ?? "2024-01";
+            _httpClient.BaseAddress = new Uri($"https://{storeUrl}/admin/api/{apiVersion}/");
             _httpClient.DefaultRequestHeaders.Add("X-Shopify-Access-Token", accessToken);
         }
 

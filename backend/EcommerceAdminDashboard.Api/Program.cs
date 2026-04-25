@@ -67,7 +67,8 @@ builder.Services
     .AddMutationType<Mutation>()
     .AddFiltering()
     .AddSorting()
-    .AddProjections();
+    .AddProjections()
+    .ModifyCostOptions(o => o.MaxFieldCost = 10000);
 
 // Controllers (for webhook endpoints)
 builder.Services.AddControllers();

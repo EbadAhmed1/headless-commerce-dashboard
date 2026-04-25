@@ -49,7 +49,7 @@ public class ShopifyWebhookService
             CustomerName = $"{shopifyOrder.Customer?.FirstName} {shopifyOrder.Customer?.LastName}",
             CustomerEmail = shopifyOrder.Customer?.Email ?? string.Empty,
             ShippingAddress = FormatAddress(shopifyOrder.ShippingAddress),
-            TotalAmount = shopifyOrder.TotalPrice ?? 0m,
+            TotalAmount = decimal.TryParse(shopifyOrder.TotalPrice, out var tp) ? tp : 0m,
             Status = shopifyOrder.FulfillmentStatus ?? "Pending",
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
@@ -63,7 +63,7 @@ public class ShopifyWebhookService
                 OrderId = order.OrderId,
                 VariantId = Guid.NewGuid(),
                 Quantity = lineItem.Quantity,
-                PriceAtPurchase = lineItem.Price ?? 0m
+                PriceAtPurchase = lineItem.PriceDecimal
             };
             order.OrderItems.Add(orderItem);
         }
