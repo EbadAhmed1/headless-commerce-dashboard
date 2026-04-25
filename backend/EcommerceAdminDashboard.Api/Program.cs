@@ -35,6 +35,18 @@ builder.Services.AddScoped<IAuthService>(sp =>
 });
 builder.Services.AddHttpClient<IShopifyService, ShopifyService>();
 
+// Shopify Webhook Service (Updated with validation)
+builder.Services.AddScoped<ShopifyWebhookService>(provider => 
+{
+    var orderRepo = provider.GetRequiredService<IOrderRepository>();
+    var productRepo = provider.GetRequiredService<IProductRepository>();
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    
+    var secret = configuration["Shopify:WebhookSecret"] ?? string.Empty;
+    
+    return new ShopifyWebhookService(orderRepo, productRepo, secret);
+});
+
 // CORS
 var corsSettings = builder.Configuration.GetSection("Cors");
 builder.Services.AddCors(options =>
