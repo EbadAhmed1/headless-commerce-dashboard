@@ -45,7 +45,7 @@ public class ShopifyWebhookService
         {
             OrderId = Guid.NewGuid(),
             ShopifyOrderId = shopifyOrder.Id,
-            OrderDate = shopifyOrder.CreatedAt ?? DateTime.UtcNow,
+            OrderDate = shopifyOrder.CreatedAt?.ToUniversalTime() ?? DateTime.UtcNow,
             CustomerName = $"{shopifyOrder.Customer?.FirstName} {shopifyOrder.Customer?.LastName}",
             CustomerEmail = shopifyOrder.Customer?.Email ?? string.Empty,
             ShippingAddress = FormatAddress(shopifyOrder.ShippingAddress),
@@ -61,7 +61,10 @@ public class ShopifyWebhookService
             {
                 OrderItemId = Guid.NewGuid(),
                 OrderId = order.OrderId,
-                VariantId = Guid.NewGuid(),
+                VariantId = null,
+                ShopifyVariantId = lineItem.VariantId,
+                ProductTitle = lineItem.Title,
+                Sku = lineItem.Sku,
                 Quantity = lineItem.Quantity,
                 PriceAtPurchase = lineItem.PriceDecimal
             };

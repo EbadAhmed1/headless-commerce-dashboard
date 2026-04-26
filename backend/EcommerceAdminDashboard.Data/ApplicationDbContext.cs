@@ -85,7 +85,7 @@ public class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.OrderItemId);
             entity.HasOne(e => e.Order).WithMany(o => o.OrderItems).HasForeignKey(e => e.OrderId);
-            entity.HasOne(e => e.Variant).WithMany(v => v.OrderItems).HasForeignKey(e => e.VariantId);
+            entity.HasOne(e => e.Variant).WithMany(v => v.OrderItems).HasForeignKey(e => e.VariantId).IsRequired(false);
         });
 
         modelBuilder.Entity<Inventory>(entity =>
