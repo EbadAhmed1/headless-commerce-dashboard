@@ -136,7 +136,9 @@ build/
 vendor/
 packages/
 
-# Configuration Files (Local)
+# Configuration Files
+appsettings.json
+appsettings.*.json
 appsettings.local.json
 appsettings.*.local.json
 local.settings.json
