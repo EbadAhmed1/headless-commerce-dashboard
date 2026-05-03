@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="EcommerceAdminDashboard.Api/EcommerceAdminDashboard.Api.csproj" />
+  <Project Path="EcommerceAdminDashboard.Data/EcommerceAdminDashboard.Data.csproj" />
+  <Project Path="EcommerceAdminDashboard.Models/EcommerceAdminDashboard.Models.csproj" />
+  <Project Path="EcommerceAdminDashboard.Services/EcommerceAdminDashboard.Services.csproj" />
+  <Project Path="EcommerceAdminDashboard.Shared/EcommerceAdminDashboard.Shared.csproj" />
+</Solution>
